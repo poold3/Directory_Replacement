@@ -45,7 +45,7 @@ class Scanner {
             while (location != string::npos) {
                 ++replacementCount;
                 inputLine.replace(location, findString.length(), replaceString);
-                location = inputLine.find(findString, location + 1);
+                location = inputLine.find(findString, location + replaceString.length());
             }
             lines.push_back(inputLine);
         }
