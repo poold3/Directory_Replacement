@@ -1,5 +1,3 @@
-//Run this program to replace all instances of "alumnitoolsdev" to "alumnitools" in the provopeak server
-
 #include <iostream>
 #include <fstream>
 #include <string>
