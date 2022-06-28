@@ -10,10 +10,13 @@
 using namespace std;
 namespace fs = std::filesystem;
 
-string START_DIRECTORY = "/mnt/e/theWebRoot/alumnitools.byu.edu";
-set<string> EXTENSIONS_TO_READ({".cfm", ".cfc", ".js", ".css", ".htm", ".html", ".txt", ".config"});
-string FIND = "alumnitoolsdev";
-string REPLACE_WITH = "alumnitools";
+string START_DIRECTORY = "/mnt/c/Documents/Project1";
+set<string> EXTENSIONS_TO_READ({".cpp", ".h", ".txt"});
+string FIND = "testsite.com";
+string REPLACE_WITH = "site.com";
+
+string BEGIN_SEARCH = ".open(";
+string END_SEARCH = ")";
 
 void WriteToFile(string filePath, vector<string> lines) {
     ofstream outFile;
@@ -44,8 +47,13 @@ int main() {
             if (EXTENSIONS_TO_READ.find(extension) != EXTENSIONS_TO_READ.end()) {
                 //Read from files
                 cout << "Reading from " << tempPath << endl << endl;
-                Scanner scanner(tempPath.string(), FIND, REPLACE_WITH);
-                scanner.RunScan();
+                Scanner scanner(tempPath.string(), FIND, REPLACE_WITH, BEGIN_SEARCH, END_SEARCH);
+                if (BEGIN_SEARCH == "" && END_SEARCH == "") {
+                    scanner.RunScan();
+                }
+                else {
+                    scanner.RunSelectiveScan();
+                }
                 int replacementCount = scanner.GetReplacementCount();
                 if (replacementCount > 0) {
                     totalReplacementCount += replacementCount;
