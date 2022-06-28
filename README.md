@@ -70,10 +70,6 @@ if (!inFile.is_open()) {
     ThrowError("Unable to open testfile.txt);
 }
 ```
-## Compile
-`make`
-## Run
-`make run`
 ## Notes
 The running of this program will generate two additional files in the `Directory_Replacement` directory:
 
